@@ -1,0 +1,42 @@
+// Resets
+html, 
+body, 
+#root, 
+main{
+  margin:0px;
+  padding:0px;
+  height: 100%;
+}
+
+//Custom Styles
+header{
+  background-color: aquamarine;
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+}
+
+.leftCard{
+  display: flex;
+
+  &:hover{
+    background-color: blue;
+  }
+}
+
+.rightCard{
+  display: flex;
+
+  &:hover{
+    background-color: green;
+  }
+}
+
+footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  background-color: aqua;
+}
