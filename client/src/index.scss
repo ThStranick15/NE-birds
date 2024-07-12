@@ -64,6 +64,25 @@ main{
   }
 }
 
+#dictionary{
+  display: flex;
+  flex-direction: column;
+  .birdCard{
+    display: flex;
+    flex-direction: row;
+    margin-left: 50px;
+    margin-top: 20px;
+    .info{
+      margin-left: 10px;
+      h1{
+        font-size: large;
+      }
+    }
+    img{
+      width: 400px;
+    }
+  }
+}
 
 footer{
   display: flex;
