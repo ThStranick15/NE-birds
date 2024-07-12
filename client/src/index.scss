@@ -10,33 +10,66 @@ main{
 
 //Custom Styles
 header{
-  background-color: aquamarine;
+  text-align: center;
 }
 
 main{
   display: flex;
   flex-direction: column;
+  background-image: url("/Background.jpg");
+  background-size: cover;
 }
 
-.leftCard{
+#content{
   display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
 
-  &:hover{
-    background-color: blue;
+#hero{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  h1{
+    text-align: center;
+  }
+
+  #cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    flex-grow: 1;
+
+    .leftCard{
+      display: flex;
+      text-decoration: none;
+      color:black;
+      padding-left: 30px;
+      &:hover{
+        background-color: blue;
+      }
+    }
+    
+    .rightCard{
+      display: flex;
+      text-decoration: none;
+      justify-content: right;
+      color:black;
+      padding-right: 30px;
+      &:hover{
+        background-color: green;
+      }
+    }
   }
 }
 
-.rightCard{
-  display: flex;
-
-  &:hover{
-    background-color: green;
-  }
-}
 
 footer{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  background-color: aqua;
+  color:black;
+  margin-left: 5px;
+  margin-right: 5px;
 }

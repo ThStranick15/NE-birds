@@ -5,7 +5,7 @@ import Practice from "./Content/Practice"
 
 export default function Content(){
     return(
-        <section>
+        <section id="content">
             <Routes>
                 <Route path='/' element={<Hero/>}/>
                 <Route path='/dictionary' element={<Dictionary/>}/>
