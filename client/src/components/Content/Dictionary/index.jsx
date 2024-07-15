@@ -1,5 +1,6 @@
 import BirdCard from "./components/BirdCard"
 import Search from "./components/Search"
+import { useStore } from "../../../store"
 
 const birds = [
     {
@@ -29,13 +30,15 @@ const birds = [
 ]
 
 export default function Dictionary(){
+    const {state} = useStore();
+
     return(
         <section id="dictionary">
             <h1>Dictionary</h1>
-            <section className="info">
+            <section className="dict-content">
                 <Search bird={birds}/>
                 {birds.map((bird, i) => 
-                    (<BirdCard key= {i} name={bird.name} img={bird.img} text={bird.text} call={bird.call}/>)
+                    ((state.show === i) && <BirdCard key= {i} name={bird.name} img={bird.img} text={bird.text} call={bird.call}/>)
                 )}
             </section>
             

@@ -83,7 +83,7 @@ main{
 #dictionary{
   display: flex;
   flex-direction: column;
-  .info{
+  .dict-content{
     display: flex;
     flex-direction: row;
   }
@@ -97,7 +97,7 @@ main{
     flex-direction: row;
     margin-left: 50px;
     margin-top: 20px;
-    .info{
+    .birdInfo{
       margin-left: 10px;
       h1{
         font-size: large;
