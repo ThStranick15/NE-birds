@@ -10,7 +10,29 @@ main{
 
 //Custom Styles
 header{
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  a{
+    background-color: #a2b77f;
+    text-decoration: none;
+    color: black;
+    margin-left: 20px;
+    padding: 10px 20px 10px 20px;
+    border: 3px solid #213513;
+    border-radius: 10px;
+    &:hover{
+      background-color: #708631;
+    }
+  }
+  h1{
+    text-align: center;
+    background-color: #bbe4fb;
+    margin: 10px auto 0 auto;
+    padding: 0 20px 0 20px;
+    border: 5px solid #446474;
+    border-radius: 10px;
+  }
 }
 
 main{
@@ -58,9 +80,11 @@ main{
     }
 
     .leftCard{
-      background-color: rgba($color: #92eefa, $alpha: 0.5);
+      background-color: rgba($color: #92eefa, $alpha: 0.7);
       h2{
         margin-left:10px;
+        flex-grow: 1;
+        text-align: center;
       }
       &:hover{
         background-color: #36e8ff;
@@ -68,10 +92,11 @@ main{
     }
     
     .rightCard{
-      justify-content: right;
-      background-color: rgba($color: #fa9292, $alpha: 0.5);
+      background-color: rgba($color: #fa9292, $alpha: 0.7);
       h2{
         margin-right:10px;
+        flex-grow: 1;
+        text-align: center;
       }
       &:hover{
         background-color: #ff4141;
@@ -82,7 +107,13 @@ main{
 
 #dictionary{
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
+  h1{
+    font-size: 30px;
+    margin-left:20px;
+    margin-bottom: 10px;
+  }
   .dict-content{
     display: flex;
     flex-direction: row;
@@ -90,17 +121,32 @@ main{
   .search{
     margin-left:20px;
     width: 25%;
+    background-color: #a2b77f;
+    border: 5px solid #213513;
+    border-radius: 5px;
+    h2{
+      margin: 5px 10px 0px 10px;
+      padding: 5px;
+      cursor: pointer;
+      &:hover{
+        background-color: #708631;
+      }
+    }
   }
   .birdCard{
     display: flex;
     width: 75%;
     flex-direction: row;
-    margin-left: 50px;
-    margin-top: 20px;
+    margin: 0px 50px 0px 50px ;
+    padding: 5px;
+    background-color: #bbe4fb;
+    border: 5px solid #446474;
+    border-radius: 5px;
     .birdInfo{
-      margin-left: 10px;
+      margin: 10px 0px 0px 10px;
       h1{
         font-size: large;
+        margin: 0px 0px 0px 0px;
       }
     }
     img{
@@ -113,7 +159,8 @@ footer{
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  color:black;
-  margin-left: 5px;
-  margin-right: 5px;
+  color:white;
+  padding: 0 5px 0 5px;
+  border-top: 5px solid #213513;
+  background-color: #708631;
 }
