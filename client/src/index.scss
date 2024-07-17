@@ -13,16 +13,19 @@ header{
   display: flex;
   justify-content: center;
   align-items: center ;
+  position: relative;
   a{
-    background-color: #a2b77f;
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background-color: #bbe4fb;
     text-decoration: none;
     color: black;
-    margin-left: 20px;
     padding: 10px 20px 10px 20px;
-    border: 3px solid #213513;
+    border: 3px solid #446474;
     border-radius: 10px;
     &:hover{
-      background-color: #708631;
+      background-color: #94c1ec;
     }
   }
   h1{
@@ -149,6 +152,20 @@ main{
         margin: 0px 0px 0px 0px;
       }
     }
+    img{
+      width: 400px;
+    }
+  }
+}
+
+#practice{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  #question{
+    display: flex;
+    flex-direction: column;
     img{
       width: 400px;
     }
