@@ -1,5 +1,6 @@
 import Question from "./components/Question"
 import { useStore } from "../../../store";
+import { useState } from "react";
 
 const questions = [
     {
@@ -30,13 +31,30 @@ const questions = [
 
 export default function Practice(){
     const {state} = useStore();
+    const [showStart, setShowStart] = useState(false)
+    const [showQuestions, setShowQuestions] = useState(false)
 
+    function handleBegin(){
+        setShowStart(false)
+        setShowQuestions(true)
+    }
+
+    function handleEnd(){
+        setShowStart(true)
+        setShowQuestions(false)
+    }
     
     return(
         <section id="practice">
-            <h1>Practice</h1>
-            <h2>Question #</h2>
-            <Question name={questions[state.question].name} text={questions[state.question].text} img={questions[state.question].img} call={questions[state.question].call}/>
+            { showStart && <section id="start-card">
+                <h1>Identification Practice</h1>
+                <a onClick={handleBegin}>Begin</a>
+            </section>}
+            { showQuestions && <section id="question-card">
+                <h2>Question #</h2>
+                <Question name={questions[state.question].name} text={questions[state.question].text} img={questions[state.question].img} call={questions[state.question].call}/>
+                <a onClick={handleEnd}>Back</a>
+            </section>}
         </section>
         
     )
