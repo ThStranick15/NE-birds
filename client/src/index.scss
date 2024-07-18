@@ -238,6 +238,28 @@ main{
         margin: 10px 0 10px 0;
       }
     }
+    #end-card{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      background-color: #bbe4fb;
+      border: 5px solid #446474;
+      padding: 10px;
+      h1{
+        font-size: 30px;
+      }
+      a{
+        color: white;
+        background-color: #708631;
+        cursor: pointer;
+        padding: 10px 20px;
+        border: 5px solid #213513;
+        border-radius: 5px;
+        &:hover{
+          background-color: #a2b77f;
+        }
+      }
+    }
   }
   
 }
