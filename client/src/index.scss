@@ -8,6 +8,14 @@ main{
   height: 100%;
 }
 
+//Custom Colors
+$light-green: #a2b77f;
+$mid-green: #708631;
+$dark-green: #213513;
+$light-blue: #bbe4fb;
+$mid-blue: #94c1ec;
+$dark-blue: #446474;
+
 //Custom Styles
 header{
   display: flex;
@@ -18,22 +26,22 @@ header{
     position: absolute;
     top: 5px;
     left: 10px;
-    background-color: #bbe4fb;
+    background-color: $light-blue;
     text-decoration: none;
     color: black;
     padding: 10px 20px 10px 20px;
-    border: 3px solid #446474;
+    border: 3px solid $dark-blue;
     border-radius: 10px;
     &:hover{
-      background-color: #94c1ec;
+      background-color: $mid-blue;
     }
   }
   h1{
     text-align: center;
-    background-color: #bbe4fb;
+    background-color: $light-blue;
     margin: 10px auto 0 auto;
     padding: 0 20px 0 20px;
-    border: 5px solid #446474;
+    border: 5px solid $dark-blue;
     border-radius: 10px;
   }
 }
@@ -83,26 +91,26 @@ main{
     }
 
     .leftCard{
-      background-color: rgba($color: #92eefa, $alpha: 0.7);
+      background-color: rgba($color: $light-blue, $alpha: 0.7);
       h2{
         margin-left:10px;
         flex-grow: 1;
         text-align: center;
       }
       &:hover{
-        background-color: #36e8ff;
+        background-color: $mid-blue;
       }
     }
     
     .rightCard{
-      background-color: rgba($color: #fa9292, $alpha: 0.7);
+      background-color: rgba($color: $light-green, $alpha: 0.7);
       h2{
         margin-right:10px;
         flex-grow: 1;
         text-align: center;
       }
       &:hover{
-        background-color: #ff4141;
+        background-color: $mid-green;
       }
     }
   }
@@ -124,15 +132,15 @@ main{
   .search{
     margin-left:20px;
     width: 25%;
-    background-color: #a2b77f;
-    border: 5px solid #213513;
+    background-color: $light-green;
+    border: 5px solid $dark-green;
     border-radius: 5px;
     h2{
       margin: 5px 10px 0px 10px;
       padding: 5px;
       cursor: pointer;
       &:hover{
-        background-color: #708631;
+        background-color: $mid-green;
       }
     }
   }
@@ -142,8 +150,8 @@ main{
     flex-direction: row;
     margin: 0px 50px 0px 50px ;
     padding: 5px;
-    background-color: #bbe4fb;
-    border: 5px solid #446474;
+    background-color: $light-blue;
+    border: 5px solid $dark-blue;
     border-radius: 5px;
     .birdInfo{
       margin: 10px 0px 0px 10px;
@@ -168,21 +176,21 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #bbe4fb;
-    border: 5px solid #446474;
+    background-color: $light-blue;
+    border: 5px solid $dark-blue;
     padding: 10px;
     h1{
       font-size: 30px;
     }
     a{
       color: white;
-      background-color: #708631;
+      background-color: $mid-green;
       cursor: pointer;
       padding: 10px 20px;
-      border: 5px solid #213513;
+      border: 5px solid $dark-green;
       border-radius: 5px;
       &:hover{
-        background-color: #a2b77f;
+        background-color: $light-green;
       }
     }
   }
@@ -190,27 +198,27 @@ main{
     display: flex;
     flex-direction: column;
     align-items: center;
-    background-color: #bbe4fb;
+    background-color: $light-blue;
     padding: 20px;
-    border: 5px solid #446474;
+    border: 5px solid $dark-blue;
     border-radius: 10px;
     h2{
       text-align: center;
-      background-color: #bbe4fb;
+      background-color: $light-blue;
       margin: 10px auto 0 auto;
       padding: 10px 20px;
-      border: 5px solid #446474;
+      border: 5px solid $dark-blue;
       border-radius: 10px;
     }
     a{
       color: white;
-      background-color: #708631;
+      background-color: $mid-green;
       cursor: pointer;
       padding: 10px 20px;
-      border: 5px solid #213513;
+      border: 5px solid $dark-green;
       border-radius: 5px;
       &:hover{
-        background-color: #a2b77f;
+        background-color: $light-green;
       }
     }
     #question{
@@ -242,21 +250,21 @@ main{
       display: flex;
       flex-direction: column;
       align-items: center;
-      background-color: #bbe4fb;
-      border: 5px solid #446474;
+      background-color: $light-blue;
+      border: 5px solid $dark-blue;
       padding: 10px;
       h1{
         font-size: 30px;
       }
       a{
         color: white;
-        background-color: #708631;
+        background-color: $mid-green;
         cursor: pointer;
         padding: 10px 20px;
-        border: 5px solid #213513;
+        border: 5px solid $dark-green;
         border-radius: 5px;
         &:hover{
-          background-color: #a2b77f;
+          background-color: $light-green;
         }
       }
     }
@@ -270,6 +278,6 @@ footer{
   justify-content: space-between;
   color:white;
   padding: 0 5px 0 5px;
-  border-top: 5px solid #213513;
-  background-color: #708631;
+  border-top: 5px solid $dark-green;
+  background-color: $mid-green;
 }
