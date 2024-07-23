@@ -139,9 +139,18 @@ main{
       margin: 5px 10px 0px 10px;
       padding: 5px;
       cursor: pointer;
+      border-radius: 5px;
       &:hover{
         background-color: $mid-green;
       }
+    }
+    .active{
+      background-color: $mid-green;
+    }
+    h3{
+      margin: 5px 10px 0px 10px;
+      padding: 5px;
+      font-size: medium;
     }
   }
   .birdCard{
@@ -154,14 +163,32 @@ main{
     border: 5px solid $dark-blue;
     border-radius: 5px;
     .birdInfo{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
       margin: 10px 0px 0px 10px;
       h1{
-        font-size: large;
+        font-size: x-large;
+        background-color: $mid-blue;
+        border: 2px solid $dark-blue;
         margin: 0px 0px 0px 0px;
+        padding: 5px;
       }
+      .description{
+        font-size: large;
+      }
+      audio{
+        margin: 10px 0 10px 0
+      }
+    }
+    div{
+      border: 2px solid $dark-blue;
     }
     img{
       width: 400px;
+    }
+    .credit{
+      font-size: small;
     }
   }
 }
