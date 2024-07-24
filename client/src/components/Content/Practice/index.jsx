@@ -39,6 +39,7 @@ export default function Practice(){
     const [questionNumber, setQuestionNumber] = useState(0)
     const [nextQuestion, setNextQuestion] = useState(false)
     const [questionArrayNumber, setQuestionArrayNumber] = useState(0)
+    const [showHint, setShowHint] = useState(false)
 
     useEffect(()=>{
         if(showStart){ //if start screen is shown reset the question number
@@ -67,6 +68,7 @@ export default function Practice(){
     const triggerNextQuestion = () => {
         setQuestionNumber(questionNumber + 1) //triggers addition of question number when answer is clicked
         setQuestionsLeft(questionsLeft - 1)
+        setShowHint(false)
         setNextQuestion(true)
     }
 
@@ -85,20 +87,26 @@ export default function Practice(){
         setShowQuestions(false)
         setShowEnd(false)
     }
+
+    function handleHint(){
+        setShowHint(true)
+    }
     
     return(
         <section id="practice">
             { showStart && <section id="start-card">
                 <h1>Identification Practice</h1>
+                <p>Identify the bird from their call! If you need a hint, you can view their image by clicking the hint button.</p>
                 <a onClick={handleBegin}>Begin</a>
             </section>}
             { showQuestions && <section id="question-card">
                 <h2>Question {questionNumber}</h2>
                 <Question name={questionArray[questionArrayNumber].name} text={questionArray[questionArrayNumber].text} img={questionArray[questionArrayNumber].img} 
-                call={questionArray[questionArrayNumber].call} nextQuestion={triggerNextQuestion}/>
-                <a onClick={handleBack}>Back</a>
+                call={questionArray[questionArrayNumber].call} nextQuestion={triggerNextQuestion} hint={showHint}/>
+                <a className="back" onClick={handleBack}>Back</a>
+                <a className="hint" onClick={handleHint}>Hint</a>
             </section>}
-            {   showEnd && <section id="end-card">
+            {   showEnd && <section id="endCard">
                 <h2>You've completed the practice!</h2>
                 <a onClick={handleBack}>Practice Again</a>
             </section>}
