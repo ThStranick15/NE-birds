@@ -20,8 +20,8 @@ On the main page the user can go to the bird dictionary or the practice game. Wi
 - Node.js
 
 ## Deployment
-Link to the repo - [Robotics Check-In](https://github.com/ThStranick15/NE-birds)  
-Deployed app - [Heroku]()
+Link to the repo - [New Jersey Birds](https://github.com/ThStranick15/NE-birds)  
+Deployed app - [Heroku](https://new-jersey-birds-21fc895c196b.herokuapp.com/)
 
 ## Contributors
 - Thomas Stranick:  https://github.com/ThStranick15
