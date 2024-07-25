@@ -1,0 +1,342 @@
+// Resets
+html, 
+body, 
+#root, 
+main{
+  margin:0px;
+  padding:0px;
+  height: 100%;
+}
+
+//Custom Colors
+$light-green: #a2b77f;
+$mid-green: #708631;
+$dark-green: #213513;
+$light-blue: #bbe4fb;
+$mid-blue: #94c1ec;
+$dark-blue: #446474;
+
+//Custom Styles
+header{
+  display: flex;
+  justify-content: center;
+  align-items: center ;
+  position: relative;
+  a{
+    position: absolute;
+    top: 5px;
+    left: 10px;
+    background-color: $light-blue;
+    text-decoration: none;
+    color: black;
+    padding: 10px 20px 10px 20px;
+    border: 3px solid $dark-blue;
+    border-radius: 10px;
+    &:hover{
+      background-color: $mid-blue;
+    }
+  }
+  h1{
+    text-align: center;
+    background-color: $light-blue;
+    margin: 10px auto 0 auto;
+    padding: 5px 20px 5px 20px;
+    border: 5px solid $dark-blue;
+    border-radius: 10px;
+  }
+}
+
+main{
+  display: flex;
+  flex-direction: column;
+  background-image: url("/Background.jpg");
+  background-size: cover;
+}
+
+#content{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+#hero{
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  h1{
+    text-align: center;
+  }
+
+  #cards{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-grow: 1;
+
+    .card{
+      display: flex;
+      width: 50%;
+      text-decoration: none;
+      color:black;
+      margin-right: 30px;
+      margin-left: 30px;
+      padding:10px;
+      border: 2px solid black;
+      border-radius: 15px;
+      img{
+        width: 400px;
+      }
+    }
+
+    .leftCard{
+      background-color: rgba($color: $light-blue, $alpha: 0.7);
+      h2{
+        margin-left:10px;
+        flex-grow: 1;
+        text-align: center;
+      }
+      &:hover{
+        background-color: $mid-blue;
+      }
+    }
+    
+    .rightCard{
+      background-color: rgba($color: $light-green, $alpha: 0.7);
+      h2{
+        margin-right:10px;
+        flex-grow: 1;
+        text-align: center;
+      }
+      &:hover{
+        background-color: $mid-green;
+      }
+    }
+  }
+}
+
+#dictionary{
+  display: flex;
+  flex-grow: 1;
+  flex-direction: column;
+  h1{
+    font-size: 30px;
+    margin-left:20px;
+    margin-bottom: 10px;
+  }
+  .dict-content{
+    display: flex;
+    flex-direction: row;
+  }
+  .search{
+    margin-left:20px;
+    width: 25%;
+    background-color: $light-green;
+    border: 5px solid $dark-green;
+    border-radius: 5px;
+    h2{
+      margin: 5px 10px 0px 10px;
+      padding: 5px;
+      cursor: pointer;
+      border-radius: 5px;
+      &:hover{
+        background-color: $mid-green;
+      }
+    }
+    .active{
+      background-color: $mid-green;
+    }
+    h3{
+      margin: 5px 10px 0px 10px;
+      padding: 5px;
+      font-size: medium;
+    }
+  }
+  .birdCard{
+    display: flex;
+    width: 75%;
+    flex-direction: row;
+    margin: 0px 50px 0px 50px ;
+    padding: 5px;
+    background-color: $light-blue;
+    border: 5px solid $dark-blue;
+    border-radius: 5px;
+    .birdInfo{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      margin: 10px 0px 0px 10px;
+      h1{
+        font-size: x-large;
+        background-color: $mid-blue;
+        border: 2px solid $dark-blue;
+        margin: 0px 0px 0px 0px;
+        padding: 5px;
+      }
+      .description{
+        font-size: large;
+      }
+      audio{
+        margin: 10px 0 10px 0
+      }
+    }
+    div{
+      border: 2px solid $dark-blue;
+    }
+    img{
+      width: 400px;
+    }
+    .credit{
+      font-size: small;
+    }
+  }
+}
+
+#practice{
+  display: flex;
+  flex-direction: column;
+  justify-content:center;
+  align-items: center;
+  flex-grow: 1;
+  #start-card{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $light-blue;
+    border: 5px solid $dark-blue;
+    padding: 10px;
+    width: 25%;
+    h1{
+      font-size: 30px;
+      margin: 20px 0 5px 0;
+      padding: 5px;
+      background-color: $mid-blue;
+      border: 3px solid $dark-blue;
+      border-radius: 5px;
+    }
+    p{
+      font-size: large;
+      text-align: center;
+    }
+    a{
+      background-color: $mid-blue;
+      cursor: pointer;
+      padding: 10px 20px;
+      border: 3px solid $dark-blue;
+      border-radius: 5px;
+      &:hover{
+        background-color: $light-blue;
+      }
+    }
+  }
+  #question-card{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $light-blue;
+    padding: 20px;
+    border: 5px solid $dark-blue;
+    border-radius: 10px;
+    h2{
+      text-align: center;
+      background-color: $light-blue;
+      margin: 10px auto 0 auto;
+      padding: 10px 20px;
+      border: 5px solid $dark-blue;
+      border-radius: 10px;
+    }
+    a{
+      color: white;
+      position: absolute;
+
+      background-color: $mid-green;
+      cursor: pointer;
+      padding: 5px 10px;
+      border: 3px solid $dark-green;
+      border-radius: 5px;
+      &:hover{
+        background-color: $light-green;
+      }
+    }
+    .back{
+      top: -20px;
+      left: -30px;
+    }
+    .hint{
+      top: -20px;
+      right: -30px;
+    }
+    #question{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      p{
+        font-size: 20px;
+        margin: 10px 0 10px 0;
+      }
+      form{
+        color: white;
+        bottom: -50px;
+        margin: 10px 0 10px 0;
+        padding: 5px 10px 5px 10px;
+        background-color: $mid-green;
+        border: 3px solid $dark-green;
+        border-radius: 5px;
+        label{
+          margin-right: 5px;
+        }
+        input{
+          margin-right: 5px;
+        }
+        button{
+          cursor: pointer;
+          padding: 5px;
+          background-color: $light-green;
+          border: 3px solid $dark-green;
+          border-radius: 5px;
+          &:hover{
+            background-color: $mid-green;
+          }
+        }
+      }
+      img{
+        width: 400px;
+        margin: 10px 0 10px 0;
+      }
+    }
+  }
+  #endCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    background-color: $light-blue;
+    border: 5px solid $dark-blue;
+    padding: 10px;
+    h1{
+      font-size: 30px;
+    }
+    a{
+      color: white;
+      background-color: $mid-green;
+      cursor: pointer;
+      padding: 10px 20px;
+      border: 3px solid $dark-green;
+      border-radius: 5px;
+      &:hover{
+        background-color: $light-green;
+      }
+    }
+  }
+}
+
+footer{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  color:white;
+  padding: 0 5px 0 5px;
+  border-top: 5px solid $dark-green;
+  background-color: $mid-green;
+}
