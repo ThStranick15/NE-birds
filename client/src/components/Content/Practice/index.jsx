@@ -86,6 +86,8 @@ export default function Practice(){
         setShowStart(true)
         setShowQuestions(false)
         setShowEnd(false)
+        setQuestionArray(questions)
+        setQuestionsLeft(questions.length)
     }
 
     function handleHint(){

@@ -283,6 +283,7 @@ main{
         padding: 5px 10px 5px 10px;
         background-color: $mid-green;
         border: 3px solid $dark-green;
+        border-radius: 5px;
         label{
           margin-right: 5px;
         }
@@ -294,6 +295,7 @@ main{
           padding: 5px;
           background-color: $light-green;
           border: 3px solid $dark-green;
+          border-radius: 5px;
           &:hover{
             background-color: $mid-green;
           }
