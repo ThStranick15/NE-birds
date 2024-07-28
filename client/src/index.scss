@@ -340,3 +340,74 @@ footer{
   border-top: 5px solid $dark-green;
   background-color: $mid-green;
 }
+
+//Media Queries (Responsive Mobile)
+@media (max-width:786px) {
+
+  main{
+    background-size:cover;
+    overflow: auto;
+  }
+
+  header{
+    a{
+      left: 5px;
+      padding: 5px 10px 5px 10px;
+    }
+    h1{
+      font-size: x-large;
+    }
+  }
+
+  #hero{
+    h1{
+      font-size: large;
+      margin: 10px;
+    }
+    #cards{
+      .card{
+        width: 90%;
+        img{
+          width: 200px;
+        }
+      }
+    }
+  }
+
+  #dictionary{
+    h1{
+      margin: 10px;
+    }
+    .search{
+      width: 90%;
+      font-size: small;
+      margin-bottom: 5px;
+    }
+    .dict-content{
+      flex-direction: column;
+      .birdCard{
+        width: 90%;
+        margin: auto;
+        flex-direction: column;
+        margin-bottom: 5px;
+        img{
+          width: 300px;
+        }
+      }
+    }
+  }
+
+  #practice{
+    #start-card{
+      width: 75%;
+    }
+    #question-card{
+      #question{
+        img{
+          width: 300px;
+        }
+      }
+    }
+    
+  }
+}

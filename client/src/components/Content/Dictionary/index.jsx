@@ -7,7 +7,7 @@ const birds = [
         name: "American Robin",
         img: "/Birds/Images/American-Robin.jpg",
         call: "/Birds/Calls/AMEROB_1.songnum1_NYle.mp3",
-        text: "A common bird, easily identified by its orange-red chest and back-grey back. Medium sized and usually seen hopping around lawns. The song goes \"cheer-up cheerily cheer-up cheerily\""
+        text: "A common bird, easily identified by its orange-red chest and black-grey back. Medium sized and usually seen hopping around lawns. The song goes \"cheer-up cheerily cheer-up cheerily\""
     },
     {
         name: "Blue Jay",
