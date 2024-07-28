@@ -352,7 +352,7 @@ footer{
   header{
     a{
       left: 5px;
-      padding: 5px 10px 5px 10px;
+      padding: 5px 6px 5px 6px;
     }
     h1{
       font-size: x-large;
@@ -400,8 +400,17 @@ footer{
   #practice{
     #start-card{
       width: 75%;
+      h1{
+        text-align: center;
+      }
     }
     #question-card{
+      .back{
+        left:-20px;
+      }
+      .hint{
+        right:-20px;
+      }
       #question{
         img{
           width: 300px;
