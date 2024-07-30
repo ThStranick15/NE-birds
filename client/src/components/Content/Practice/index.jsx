@@ -40,6 +40,7 @@ export default function Practice(){
     const [nextQuestion, setNextQuestion] = useState(false)
     const [questionArrayNumber, setQuestionArrayNumber] = useState(0)
     const [showHint, setShowHint] = useState(false)
+    const [difficulty, setDifficulty] = useState('Easy')
 
     useEffect(()=>{
         if(showStart){ //if start screen is shown reset the question number
@@ -93,18 +94,32 @@ export default function Practice(){
     function handleHint(){
         setShowHint(true)
     }
+
+    function handleDifficulty(){
+        if (difficulty === 'Easy'){
+            setDifficulty('Hard')
+        }
+        else{
+            setDifficulty('Easy')
+        }
+    }
     
     return(
         <section id="practice">
             { showStart && <section id="start-card">
                 <h1>Identification Practice</h1>
                 <p>Identify the bird from their call! If you need a hint, you can view their image by clicking the hint button.</p>
+                <section className="difficulty">
+                    <p>Difficulty:</p>
+                    <a onClick={handleDifficulty}>{difficulty}</a>
+                </section>
                 <a onClick={handleBegin}>Begin</a>
+                
             </section>}
             { showQuestions && <section id="question-card">
                 <h2>Question {questionNumber}</h2>
                 <Question name={questionArray[questionArrayNumber].name} text={questionArray[questionArrayNumber].text} img={questionArray[questionArrayNumber].img} 
-                call={questionArray[questionArrayNumber].call} nextQuestion={triggerNextQuestion} hint={showHint}/>
+                call={questionArray[questionArrayNumber].call} nextQuestion={triggerNextQuestion} hint={showHint} difficulty={difficulty}/>
                 <a className="back" onClick={handleBack}>Back</a>
                 <a className="hint" onClick={handleHint}>Hint</a>
             </section>}
