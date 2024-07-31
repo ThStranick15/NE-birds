@@ -7,25 +7,29 @@ const questions = [
         name: "American Robin",
         img: "/Birds/Images/American-Robin.jpg",
         call: "/Birds/Calls/AMEROB_1.songnum1_NYle.mp3",
-        text: "What bird is this?"
+        text: "What bird is this?",
+        choices: ['American Robin','Blue Jay','Northern Cardinal','Mourning Dove']
     },
     {
         name: "Blue Jay",
         img: "/Birds/Images/Blue-Jay.jpg",
         call:"/Birds/Calls/BLUJAY_1.jaycallsampclicks_FLle_1.mp3",
-        text: "What bird is this?"
+        text: "What bird is this?",
+        choices: ['American Robin','Blue Jay','Northern Cardinal','Mourning Dove']
     },
     {
         name: "Northern Cardinal",
         img: "/Birds/Images/Male-Northern-Cardinal.jpg",
         call:"/Birds/Calls/NORCAR_1.songsnum1_NYle_1.mp3",
-        text: "What bird is this?"
+        text: "What bird is this?",
+        choices: ['American Robin','Blue Jay','Northern Cardinal','Mourning Dove']
     },
     {
         name: "Mourning Dove",
         img: "/Birds/Images/Mourning-Dove.jpg",
         call:"/Birds/Calls/MOUDOV_1.cooamppartialcoo_NYle_1.mp3",
-        text: "What bird is this?"
+        text: "What bird is this?",
+        choices: ['American Robin','Blue Jay','Northern Cardinal','Mourning Dove']
     }
 ]
 
@@ -40,6 +44,8 @@ export default function Practice(){
     const [nextQuestion, setNextQuestion] = useState(false)
     const [questionArrayNumber, setQuestionArrayNumber] = useState(0)
     const [showHint, setShowHint] = useState(false)
+    const [difficulty, setDifficulty] = useState('Easy')
+    const [randomChoices, setRandomChoices] = useState(['1','2','3','4'])
 
     useEffect(()=>{
         if(showStart){ //if start screen is shown reset the question number
@@ -48,6 +54,7 @@ export default function Practice(){
         else{ //if turned off, start questions
             setQuestionNumber(1)
             getNextQuestion()
+            setRandomChoices(randomizeChoices(questionArrayNumber))
         }
     },[showStart])
 
@@ -56,6 +63,7 @@ export default function Practice(){
             if(questionsLeft > 0){
                 getNextQuestion()
                 setQuestionArray(old => {return old.filter((_,i)=> i !== questionArrayNumber)})
+                setRandomChoices(randomizeChoices(questionArrayNumber))
             }
             else {
                 setShowEnd(true)
@@ -93,18 +101,37 @@ export default function Practice(){
     function handleHint(){
         setShowHint(true)
     }
+
+    function handleDifficulty(){
+        if (difficulty === 'Easy'){
+            setDifficulty('Hard')
+        }
+        else{
+            setDifficulty('Easy')
+        }
+    }
+
+    function randomizeChoices(i){
+        const choices = questions[i].choices
+        return choices.sort(function(){return 0.5 - Math.random()})
+    }
     
     return(
         <section id="practice">
             { showStart && <section id="start-card">
                 <h1>Identification Practice</h1>
                 <p>Identify the bird from their call! If you need a hint, you can view their image by clicking the hint button.</p>
+                <section className="difficulty">
+                    <p>Difficulty:</p>
+                    <a onClick={handleDifficulty}>{difficulty}</a>
+                </section>
                 <a onClick={handleBegin}>Begin</a>
+                
             </section>}
             { showQuestions && <section id="question-card">
                 <h2>Question {questionNumber}</h2>
                 <Question name={questionArray[questionArrayNumber].name} text={questionArray[questionArrayNumber].text} img={questionArray[questionArrayNumber].img} 
-                call={questionArray[questionArrayNumber].call} nextQuestion={triggerNextQuestion} hint={showHint}/>
+                call={questionArray[questionArrayNumber].call} choices={randomChoices} nextQuestion={triggerNextQuestion} hint={showHint} difficulty={difficulty}/>
                 <a className="back" onClick={handleBack}>Back</a>
                 <a className="hint" onClick={handleHint}>Hint</a>
             </section>}
