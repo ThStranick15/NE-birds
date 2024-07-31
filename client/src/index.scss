@@ -369,9 +369,32 @@ main{
           }
         }
       }
+      .multipleChoice{
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px; /* Adjust spacing between buttons as needed */
+        button{
+          cursor: pointer;
+          padding: 5px;
+          margin: 0px 5px 0px 5px;
+          background-color: $light-green;
+          border: 3px solid $dark-green;
+          border-radius: 5px;
+          font-size: medium;
+          &:hover{
+            background-color: $mid-green;
+          }
+        }
+        
+      }
       img{
         width: 400px;
         margin: 10px 0 10px 0;
+      }
+      .response{
+        font-size: large;
+        margin: 10px 0px 0px 0px;
       }
     }
   }

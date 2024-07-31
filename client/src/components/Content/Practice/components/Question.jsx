@@ -10,7 +10,6 @@ export default function Question(props){
     function handleSubmit(e){
         e.preventDefault()
         if(props.name === answer){
-            console.log("Nice job!")
             setWrong(false)
             setCorrect(true)
             setWrongAnswerCount(0)
@@ -29,8 +28,28 @@ export default function Question(props){
         else{
             setWrongText('That\'s not it.')
         }
-        
-        console.log("That's not it.")
+    }
+
+    function handleChoice(element){
+        if(props.name === element){
+            setWrong(false)
+            setCorrect(true)
+            setWrongAnswerCount(0)
+            setTimeout(()=>{ //wait 3 sec before going to next question
+                props.nextQuestion()
+                setCorrect(false)
+                
+            }, "3000")
+            return
+        }
+        setWrongAnswerCount(wrongAnswerCount + 1)
+        setWrong(true)
+        if(wrongText === 'That\'s not it.'){
+            setWrongText('Try again.')
+        }
+        else{
+            setWrongText('That\'s not it.')
+        }
     }
 
     return(
@@ -38,13 +57,17 @@ export default function Question(props){
             <p>{props.text}</p>
             <audio controls src={props.call}></audio>
             {props.hint && <img src={props.img}/>} 
-            <form onSubmit={handleSubmit}>
-                <label>Answer:</label>
-                <input type="text" onChange={(e)=>setAnswer(e.target.value)}/>
-                <button type="submit">Submit</button>
-            </form>
-            {wrong && <p>{wrongText}</p>}
-            {correct && <p>Correct!</p>}
+            {props.difficulty === 'Easy' ? 
+                <section className="multipleChoice">
+                {props.choices.map((element,i) => <button className="answer-{i}" onClick={() => handleChoice(element)}>{element}</button>)}
+                </section> :
+                <form onSubmit={handleSubmit}>
+                    <label>Answer:</label>
+                    <input type="text" onChange={(e)=>setAnswer(e.target.value)}/>
+                    <button type="submit">Submit</button>
+                </form>}
+            {wrong && <p className="response">{wrongText}</p>}
+            {correct && <p className="response">Correct!</p>}
         </section>
     )
 }
