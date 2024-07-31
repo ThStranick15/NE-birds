@@ -153,6 +153,57 @@ main{
       font-size: medium;
     }
   }
+  .mobileSearch{
+    display: flex;
+    position:relative;
+    padding: 10px 0px 10px 0px;
+    margin: 0px 0px 10px 0px;
+    background-color: $dark-green;
+    a{
+      margin: 5px;
+      padding: 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: $mid-green;
+      &:hover{
+        background-color: $light-green;
+      }
+    }
+    .dropdown{
+      background-color: $light-green;
+      margin: 5px 10px 0px 10px;
+      padding: 0px;
+      border-radius: 5px;
+      position:absolute;
+      left:30px;
+      top:10px;
+      h2{
+        margin: 5px 10px 5px 10px;
+        padding: 5px;
+        cursor: pointer;
+        border-radius: 5px;
+        &:hover{
+          background-color: $mid-green;
+        }
+      }
+    }
+    .selected{
+      h2{
+        display: none;
+        margin: 5px;
+        padding: 5px;
+        background-color: $light-green;
+        border-radius: 5px;
+      }
+      .active{
+        display: block;
+      }
+    }
+    .active{
+      background-color: $mid-green;
+    }
+    
+  }
   .birdCard{
     display: flex;
     width: 75%;
@@ -218,6 +269,7 @@ main{
     p{
       font-size: large;
       text-align: center;
+      margin: 10px;
     }
     a{
       background-color: $mid-blue;
@@ -227,6 +279,22 @@ main{
       border-radius: 5px;
       &:hover{
         background-color: $light-blue;
+      }
+    }
+    .difficulty{
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      margin: 0px 0px 10px 0px;
+      a{
+        margin: 0px 5px 0px 5px;
+        padding: 5px 10px 5px 10px;
+        background-color: $mid-green;
+        border: 3px solid $dark-green;
+        border-radius: 5px;
+        &:hover{
+          background-color: $light-green;
+        }
       }
     }
   }
@@ -301,9 +369,32 @@ main{
           }
         }
       }
+      .multipleChoice{
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        gap: 10px; /* Adjust spacing between buttons as needed */
+        button{
+          cursor: pointer;
+          padding: 5px;
+          margin: 0px 5px 0px 5px;
+          background-color: $light-green;
+          border: 3px solid $dark-green;
+          border-radius: 5px;
+          font-size: medium;
+          &:hover{
+            background-color: $mid-green;
+          }
+        }
+        
+      }
       img{
         width: 400px;
         margin: 10px 0 10px 0;
+      }
+      .response{
+        font-size: large;
+        margin: 10px 0px 0px 0px;
       }
     }
   }
