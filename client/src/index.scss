@@ -118,7 +118,7 @@ main{
 
 #dictionary{
   display: flex;
-  flex-grow: 1;
+  
   flex-direction: column;
   h1{
     font-size: 30px;
@@ -207,6 +207,7 @@ main{
   .birdCard{
     display: flex;
     width: 75%;
+    height: fit-content;
     flex-direction: row;
     margin: 0px 50px 0px 50px ;
     padding: 5px;

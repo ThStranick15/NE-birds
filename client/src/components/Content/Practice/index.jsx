@@ -81,7 +81,6 @@ export default function Practice(){
     const [showHint, setShowHint] = useState(false)
     const [difficulty, setDifficulty] = useState('Easy')
     const [mode, setMode] = useState('Call')
-    const [randomChoices, setRandomChoices] = useState(['1','2','3','4'])
 
     useEffect(()=>{
         if(showStart){ //if start screen is shown reset the question number
