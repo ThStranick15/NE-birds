@@ -55,11 +55,11 @@ export default function Question(props){
     return(
         <section id="question">
             <p>{props.text}</p>
-            <audio controls src={props.call}></audio>
-            {props.hint && <img src={props.img}/>} 
+            {(props.mode === 'Call' || props.mode === 'Call & Picture') && <audio controls src={props.call}></audio>}
+            {(props.hint || props.mode === 'Picture' || props.mode === 'Call & Picture') && <img src={props.img}/>} 
             {props.difficulty === 'Easy' ? 
                 <section className="multipleChoice">
-                {props.choices.map((element,i) => <button className="answer-{i}" onClick={() => handleChoice(element)}>{element}</button>)}
+                {props.choices.map((element,i) => <button onClick={() => handleChoice(element)}>{element}</button>)}
                 </section> :
                 <form onSubmit={handleSubmit}>
                     <label>Answer:</label>

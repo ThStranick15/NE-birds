@@ -25,7 +25,37 @@ const birds = [
         name: "Mourning Dove",
         img: "/Birds/Images/Mourning-Dove.jpg",
         call:"/Birds/Calls/MOUDOV_1.cooamppartialcoo_NYle_1.mp3",
-        text: "A planier beige-grey color with darker wings. A larger bird that is normally seen on the ground if eating. The mournful call sounds of \"coo-ah coo coo coo\"."
+        text: "A large beige-grey colored bird with darker wings, sometimes seen on the ground if eating. The mournful call sounds of \"coo-ah coo coo coo\"."
+    },
+    {
+        name: "American Goldfinch",
+        img: "/Birds/Images/American-Goldfinch.jpg",
+        call:"/Birds/Calls/AMEGOL_1.songnum1_UTkc_1.mp3",
+        text: "The state bird of New Jersey. A small bird with a bright yellow coat of feathers and black accents. The song is complex, this example with a starting chatter and high low chirps following."
+    },
+    {
+        name: "House Finch",
+        img: "/Birds/Images/House-Finch.jpg",
+        call:"/Birds/Calls/HOUFIN_1.songnum1_NYle_1.mp3",
+        text: "The male colored red around the head, and the female a browner variant. Their song is complex and warbling that often ends in an extended zeee."
+    },
+    {
+        name: "Song Sparrow",
+        img: "/Birds/Images/Song-Sparrow.jpg",
+        call:"/Birds/Calls/SONSPA_1.songsnum1_NYle_1.mp3",
+        text: "A smaller brown-grey bird that has brown streaks along its chest and head. It's song usually comprises of a few starting notes and then finishes with a trill."
+    },
+    {
+        name: "Tufted Titmouse",
+        img: "/Birds/Images/Tufted-Titmouse.jpg",
+        call:"/Birds/Calls/TUFTIT_1.songsnum1_OHle_1.mp3",
+        text: "Identified by it's crest, grey top, white bottom, and orange under-wing coloring. It's song sounds like \"Peter-Peter\" repeated."
+    },
+    {
+        name: "White-breasted Nuthatch",
+        img: "/Birds/Images/White-Breasted-Nuthatch.jpg",
+        call:"/Birds/Calls/WHBRNU_1.songnum1_NYle_1.mp3",
+        text: "A bit rounder of a bird, it has a white chest and belly, black top of head, and black and grey feathers. The call is a nasaly \"wha-wha-wha\" notes that follow each other."
     }
 ]
 
@@ -41,7 +71,6 @@ export default function Dictionary(){
                     ((state.show === i) && <BirdCard key= {i} name={bird.name} img={bird.img} text={bird.text} call={bird.call}/>)
                 )}
             </section>
-            
             
         </section>
         

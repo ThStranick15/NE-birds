@@ -8,14 +8,14 @@ const questions = [
         img: "/Birds/Images/American-Robin.jpg",
         call: "/Birds/Calls/AMEROB_1.songnum1_NYle.mp3",
         text: "What bird is this?",
-        choices: ['American Robin','Blue Jay','Northern Cardinal','Mourning Dove']
+        choices: ['American Robin','Song Sparrow','Northern Cardinal','House Finch']
     },
     {
         name: "Blue Jay",
         img: "/Birds/Images/Blue-Jay.jpg",
         call:"/Birds/Calls/BLUJAY_1.jaycallsampclicks_FLle_1.mp3",
         text: "What bird is this?",
-        choices: ['American Robin','Blue Jay','Northern Cardinal','Mourning Dove']
+        choices: ['Tufted Titmouse','Blue Jay','Northern Cardinal','Song Sparrow']
     },
     {
         name: "Northern Cardinal",
@@ -29,7 +29,42 @@ const questions = [
         img: "/Birds/Images/Mourning-Dove.jpg",
         call:"/Birds/Calls/MOUDOV_1.cooamppartialcoo_NYle_1.mp3",
         text: "What bird is this?",
-        choices: ['American Robin','Blue Jay','Northern Cardinal','Mourning Dove']
+        choices: ['American Robin','White-breasted Nuthatch','House Finch','Mourning Dove']
+    },
+    {
+        name: "American Goldfinch",
+        img: "/Birds/Images/American-Goldfinch.jpg",
+        call:"/Birds/Calls/AMEGOL_1.songnum1_UTkc_1.mp3",
+        text: "What bird is this?",
+        choices: ['American Robin','American Goldfinch','Northern Cardinal','Mourning Dove']
+    },
+    {
+        name: "House Finch",
+        img: "/Birds/Images/House-Finch.jpg",
+        call:"/Birds/Calls/HOUFIN_1.songnum1_NYle_1.mp3",
+        text: "What bird is this?",
+        choices: ['Song Sparrow','Blue Jay','Northern Cardinal','House Finch']
+    },
+    {
+        name: "Song Sparrow",
+        img: "/Birds/Images/Song-Sparrow.jpg",
+        call:"/Birds/Calls/SONSPA_1.songsnum1_NYle_1.mp3",
+        text: "What bird is this?",
+        choices: ['American Robin','White-breasted Nuthatch','American Goldfinch','Song Sparrow']
+    },
+    {
+        name: "Tufted Titmouse",
+        img: "/Birds/Images/Tufted-Titmouse.jpg",
+        call:"/Birds/Calls/TUFTIT_1.songsnum1_OHle_1.mp3",
+        text: "What bird is this?",
+        choices: ['Tufted Titmouse','Blue Jay','Northern Cardinal','Mourning Dove']
+    },
+    {
+        name: "White-breasted Nuthatch",
+        img: "/Birds/Images/White-Breasted-Nuthatch.jpg",
+        call:"/Birds/Calls/WHBRNU_1.songnum1_NYle_1.mp3",
+        text: "What bird is this?",
+        choices: ['Tufted Titmouse','Blue Jay','White-breasted Nuthatch','Mourning Dove']
     }
 ]
 
@@ -45,16 +80,19 @@ export default function Practice(){
     const [questionArrayNumber, setQuestionArrayNumber] = useState(0)
     const [showHint, setShowHint] = useState(false)
     const [difficulty, setDifficulty] = useState('Easy')
+    const [mode, setMode] = useState('Call')
     const [randomChoices, setRandomChoices] = useState(['1','2','3','4'])
 
     useEffect(()=>{
         if(showStart){ //if start screen is shown reset the question number
             setQuestionNumber(0)
+            randomizeChoices()
+            setShowHint(false)
         }
         else{ //if turned off, start questions
             setQuestionNumber(1)
             getNextQuestion()
-            setRandomChoices(randomizeChoices(questionArrayNumber))
+            
         }
     },[showStart])
 
@@ -63,7 +101,6 @@ export default function Practice(){
             if(questionsLeft > 0){
                 getNextQuestion()
                 setQuestionArray(old => {return old.filter((_,i)=> i !== questionArrayNumber)})
-                setRandomChoices(randomizeChoices(questionArrayNumber))
             }
             else {
                 setShowEnd(true)
@@ -111,9 +148,20 @@ export default function Practice(){
         }
     }
 
-    function randomizeChoices(i){
-        const choices = questions[i].choices
-        return choices.sort(function(){return 0.5 - Math.random()})
+    function handleMode(){
+        if (mode === 'Call'){
+            setMode('Picture')
+        }
+        else if(mode === 'Picture'){
+            setMode('Call & Picture')
+        }
+        else{
+            setMode('Call')
+        }
+    }
+
+    function randomizeChoices(){ //randomize choices before game begins
+        questions.forEach((element) => {element.choices.sort(function(){return 0.5 - Math.random()})})
     }
     
     return(
@@ -124,6 +172,7 @@ export default function Practice(){
                 <section className="difficulty">
                     <p>Difficulty:</p>
                     <a onClick={handleDifficulty}>{difficulty}</a>
+                    <a onClick={handleMode}>{mode}</a>
                 </section>
                 <a onClick={handleBegin}>Begin</a>
                 
@@ -131,11 +180,11 @@ export default function Practice(){
             { showQuestions && <section id="question-card">
                 <h2>Question {questionNumber}</h2>
                 <Question name={questionArray[questionArrayNumber].name} text={questionArray[questionArrayNumber].text} img={questionArray[questionArrayNumber].img} 
-                call={questionArray[questionArrayNumber].call} choices={randomChoices} nextQuestion={triggerNextQuestion} hint={showHint} difficulty={difficulty}/>
+                call={questionArray[questionArrayNumber].call} choices={questionArray[questionArrayNumber].choices} nextQuestion={triggerNextQuestion} hint={showHint} difficulty={difficulty} mode={mode}/>
                 <a className="back" onClick={handleBack}>Back</a>
-                <a className="hint" onClick={handleHint}>Hint</a>
+                {mode === 'Call' && <a className="hint" onClick={handleHint}>Hint</a>}
             </section>}
-            {   showEnd && <section id="endCard">
+            {showEnd && <section id="endCard">
                 <h2>You've completed the practice!</h2>
                 <a onClick={handleBack}>Practice Again</a>
             </section>}
