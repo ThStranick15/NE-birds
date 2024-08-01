@@ -45,6 +45,7 @@ export default function Practice(){
     const [questionArrayNumber, setQuestionArrayNumber] = useState(0)
     const [showHint, setShowHint] = useState(false)
     const [difficulty, setDifficulty] = useState('Easy')
+    const [mode, setMode] = useState('Call')
     const [randomChoices, setRandomChoices] = useState(['1','2','3','4'])
 
     useEffect(()=>{
@@ -111,6 +112,18 @@ export default function Practice(){
         }
     }
 
+    function handleMode(){
+        if (mode === 'Call'){
+            setMode('Picture')
+        }
+        else if(mode === 'Picture'){
+            setMode('Call & Picture')
+        }
+        else{
+            setMode('Call')
+        }
+    }
+
     function randomizeChoices(i){
         const choices = questions[i].choices
         return choices.sort(function(){return 0.5 - Math.random()})
@@ -124,6 +137,7 @@ export default function Practice(){
                 <section className="difficulty">
                     <p>Difficulty:</p>
                     <a onClick={handleDifficulty}>{difficulty}</a>
+                    <a onClick={handleMode}>{mode}</a>
                 </section>
                 <a onClick={handleBegin}>Begin</a>
                 
@@ -131,11 +145,11 @@ export default function Practice(){
             { showQuestions && <section id="question-card">
                 <h2>Question {questionNumber}</h2>
                 <Question name={questionArray[questionArrayNumber].name} text={questionArray[questionArrayNumber].text} img={questionArray[questionArrayNumber].img} 
-                call={questionArray[questionArrayNumber].call} choices={randomChoices} nextQuestion={triggerNextQuestion} hint={showHint} difficulty={difficulty}/>
+                call={questionArray[questionArrayNumber].call} choices={randomChoices} nextQuestion={triggerNextQuestion} hint={showHint} difficulty={difficulty} mode={mode}/>
                 <a className="back" onClick={handleBack}>Back</a>
-                <a className="hint" onClick={handleHint}>Hint</a>
+                {mode === 'Call' && <a className="hint" onClick={handleHint}>Hint</a>}
             </section>}
-            {   showEnd && <section id="endCard">
+            {showEnd && <section id="endCard">
                 <h2>You've completed the practice!</h2>
                 <a onClick={handleBack}>Practice Again</a>
             </section>}
