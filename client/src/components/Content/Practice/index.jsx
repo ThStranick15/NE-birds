@@ -167,10 +167,14 @@ export default function Practice(){
         <section id="practice">
             { showStart && <section id="start-card">
                 <h1>Identification Practice</h1>
-                <p>Identify the bird from their call! If you need a hint, you can view their image by clicking the hint button.</p>
+                <div className="start-text">
+                    <p>Identify the bird!</p>
+                    <p>Select the difficulty and mode below before you begin.</p>
+                </div>
                 <section className="difficulty">
                     <p>Difficulty:</p>
                     <a onClick={handleDifficulty}>{difficulty}</a>
+                    <p>Mode:</p>
                     <a onClick={handleMode}>{mode}</a>
                 </section>
                 <a onClick={handleBegin}>Begin</a>
