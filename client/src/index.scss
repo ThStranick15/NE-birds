@@ -6,6 +6,7 @@ main{
   margin:0px;
   padding:0px;
   height: 100%;
+  font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
 }
 
 //Custom Colors
@@ -51,6 +52,7 @@ main{
   flex-direction: column;
   background-image: url("/Background.jpg");
   background-size: cover;
+  overflow: hidden;
 }
 
 #content{
@@ -66,6 +68,7 @@ main{
 
   h1{
     text-align: center;
+    margin: 20px 0 0 0
   }
 
   #cards{
@@ -77,12 +80,14 @@ main{
 
     .card{
       display: flex;
+      justify-content: center;
+      align-items: center;
       width: 50%;
       text-decoration: none;
       color:black;
       margin-right: 30px;
       margin-left: 30px;
-      padding:10px;
+      overflow: hidden;
       border: 2px solid black;
       border-radius: 15px;
       img{
@@ -90,27 +95,78 @@ main{
       }
     }
 
+    .card-text{
+      margin: 0 10px;
+      display: flex;
+      flex-direction: column;
+      flex-grow: 1;
+    }
+
+    .line{
+      width: 0px;
+      height: 10px;
+      box-sizing: border-box;
+    }
+
+      @keyframes lengthen {
+        to {
+          width: 100%;
+        }
+      }
+
     .leftCard{
-      background-color: rgba($color: $light-blue, $alpha: 0.7);
+      background-color: $light-blue;
+      animation: 2s slide-left forwards;
+      transform: translate(-40%);
       h2{
-        margin-left:10px;
-        flex-grow: 1;
         text-align: center;
       }
+
+      .line{
+        background-color: $dark-blue;
+      }
+
       &:hover{
         background-color: $mid-blue;
+      }
+
+      &:hover .line{
+        animation: 2s lengthen forwards;
+      }
+
+      @keyframes slide-left{
+        to {
+          transform: translateX(0);
+        }
       }
     }
     
     .rightCard{
-      background-color: rgba($color: $light-green, $alpha: 0.7);
+      background-color: $light-green;
+      animation: 2s slide-left forwards;
+      transform: translate(40%);
+
       h2{
-        margin-right:10px;
         flex-grow: 1;
         text-align: center;
       }
+
+      .line{
+        background-color: $dark-green;
+      }
+
       &:hover{
         background-color: $mid-green;
+      }
+
+      &:hover .line{
+        animation: 2s lengthen forwards;
+      }
+
+      @keyframes slide-right{
+        to {
+          transform: translateX(0);
+        }
       }
     }
   }
@@ -267,37 +323,51 @@ main{
       border: 3px solid $dark-blue;
       border-radius: 5px;
     }
-    p{
-      font-size: large;
-      text-align: center;
+    .start-text{
       margin: 10px;
-    }
-    a{
-      background-color: $mid-blue;
-      cursor: pointer;
-      padding: 10px 20px;
-      border: 3px solid $dark-blue;
-      border-radius: 5px;
-      &:hover{
-        background-color: $light-blue;
+      p{
+        margin: 0px;
+        font-size: large;
+        text-align: center;
       }
     }
+    
+    a{
+      color:white;
+      background-color: $mid-green;
+      cursor: pointer;
+      padding: 10px 20px;
+      border: 3px solid $dark-green;
+      border-radius: 5px;
+      &:hover{
+        background-color: $light-green;
+      }
+    }
+
     .difficulty{
       display: flex;
       justify-content: center;
       align-items: center;
       margin: 0px 0px 10px 0px;
+      p{
+        font-size: large;
+        &:nth-of-type(2){
+          margin-left: 10px;
+        }
+      }
       a{
         margin: 0px 5px 0px 5px;
         padding: 5px 10px 5px 10px;
-        background-color: $mid-green;
+        background-color: $mid-blue;
         border: 3px solid $dark-green;
+        color: black;
         border-radius: 5px;
         &:hover{
-          background-color: $light-green;
+          background-color: $light-blue;
         }
       }
     }
+    
   }
   #question-card{
     position: relative;
@@ -454,11 +524,12 @@ footer{
   #hero{
     h1{
       font-size: large;
-      margin: 10px;
+      margin: 20px 0 0 0;
     }
     #cards{
       .card{
         width: 90%;
+        font-size: 15px;
         img{
           width: 200px;
         }
