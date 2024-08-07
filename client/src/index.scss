@@ -561,6 +561,7 @@ footer{
   }
 
   #practice{
+    margin: 30px 0;
     #start-card{
       width: 75%;
       h1{
@@ -568,6 +569,7 @@ footer{
       }
     }
     #question-card{
+      margin: 0;
       .back{
         left:-20px;
       }
