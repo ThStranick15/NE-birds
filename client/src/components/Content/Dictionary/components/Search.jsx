@@ -20,7 +20,8 @@ export default function Search(props){
         <>
         {isMobile ? 
         <section className="mobileSearch">
-            <a onClick={handleDrop}>\/</a>
+            {drop ? <a onClick={handleDrop}>&#9660;</a> : <a onClick={handleDrop}>&#9650;</a>}
+            {state.show === -1 && <h2 className="placeholderBird">Select A Bird</h2>}
             {drop ? 
             <section className="dropdown">
                 {props.bird.map((bird, i) => <h2 className={state.show === i && "active"} onClick={() => handleClick(i)}>{bird.name}</h2>)}

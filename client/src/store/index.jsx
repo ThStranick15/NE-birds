@@ -4,7 +4,7 @@ const Context = createContext()
 
 export function StoreProvider(props){
     const initalState = {
-        show: 0,
+        show: -1,
         question: 0
     }
 
