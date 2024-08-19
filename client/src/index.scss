@@ -184,6 +184,20 @@ main{
   .dict-content{
     display: flex;
     flex-direction: row;
+    .placeholder{
+      display: flex;
+      justify-content: center;
+      background-color: $light-blue;
+      border: 3px solid $dark-blue;
+      width: 50%;
+      text-align: center;
+      padding: 0px 10px;
+      margin: auto;
+      p{
+        font-size: large;
+        font-weight: bold;
+      }
+    }
   }
   .search{
     margin-left:20px;
@@ -215,6 +229,13 @@ main{
     padding: 10px 0px 10px 0px;
     margin: 0px 0px 10px 0px;
     background-color: $dark-green;
+    .placeholderBird{
+      display: block;
+        background-color: $light-green;
+        border-radius: 5px;
+        margin: 5px;
+        padding: 5px;
+    }
     a{
       margin: 5px;
       padding: 10px;
@@ -548,6 +569,9 @@ footer{
     }
     .dict-content{
       flex-direction: column;
+      .placeholder{
+        width: 75%;
+      }
       .birdCard{
         width: 90%;
         margin: auto;

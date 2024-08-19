@@ -1,5 +1,6 @@
 import BirdCard from "./components/BirdCard"
 import Search from "./components/Search"
+import {useMediaQuery} from 'react-responsive'
 import { useStore } from "../../../store"
 
 const birds = [
@@ -61,7 +62,8 @@ const birds = [
 
 export default function Dictionary(){
     const {state} = useStore();
-
+    const isMobile = useMediaQuery({query: '(max-width:786px)'})
+    
     return(
         <section id="dictionary">
             <h1>Dictionary</h1>
@@ -70,6 +72,10 @@ export default function Dictionary(){
                 {birds.map((bird, i) => 
                     ((state.show === i) && <BirdCard key= {i} name={bird.name} img={bird.img} text={bird.text} call={bird.call}/>)
                 )}
+                {state.show === -1 && 
+                <section className="placeholder"> 
+                    {isMobile ? <p>Select a bird using the dropdown arrow above to view some information about them!</p> : <p>Select a bird using the list on the left to view some information about them!</p>}
+                </section>}
             </section>
             
         </section>
