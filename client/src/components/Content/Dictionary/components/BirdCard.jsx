@@ -9,7 +9,6 @@ export default function BirdCard(props){
                     <div></div>
                     <audio controls src={props.call}></audio>
                 </section>
-                
                 <p className="credit">Audio sourced from National Audubon Society. Image sourced from Cornell Lab.</p>
             </section>
             
