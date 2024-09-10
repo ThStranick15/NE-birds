@@ -1,5 +1,5 @@
 const router = require('express').Router();
-const Bird = require('../models/Bird')
+const {Bird,Question} = require('../models')
 
 //GET all birds /api/birds
 router.get('/birds', async (req,res) => {
@@ -11,12 +11,11 @@ router.get('/birds', async (req,res) => {
     }
 })
 
-//GET bird by name
-router.get('/birds/:name', async(req,res) => {
-    const name = req.params.name
+//GET all questions /api/questions
+router.get('/questions', async (req,res) => {
     try {
-        const bird = await Bird.find({name: name})
-        res.json(bird)
+        const questions = await Question.find()
+        res.json(questions)
     } catch (error) {
         console.log(error)
     }

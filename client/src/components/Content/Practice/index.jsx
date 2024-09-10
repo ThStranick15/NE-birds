@@ -2,76 +2,11 @@ import Question from "./components/Question"
 import { useStore } from "../../../store";
 import { useEffect, useState } from "react";
 
-const questions = [
-    {
-        name: "American Robin",
-        img: "/Birds/Images/American-Robin.jpg",
-        call: "/Birds/Calls/AMEROB_1.songnum1_NYle.mp3",
-        text: "What bird is this?",
-        choices: ['American Robin','Song Sparrow','Northern Cardinal','House Finch']
-    },
-    {
-        name: "Blue Jay",
-        img: "/Birds/Images/Blue-Jay.jpg",
-        call:"/Birds/Calls/BLUJAY_1.jaycallsampclicks_FLle_1.mp3",
-        text: "What bird is this?",
-        choices: ['Tufted Titmouse','Blue Jay','Northern Cardinal','Song Sparrow']
-    },
-    {
-        name: "Northern Cardinal",
-        img: "/Birds/Images/Male-Northern-Cardinal.jpg",
-        call:"/Birds/Calls/NORCAR_1.songsnum1_NYle_1.mp3",
-        text: "What bird is this?",
-        choices: ['American Robin','Blue Jay','Northern Cardinal','Mourning Dove']
-    },
-    {
-        name: "Mourning Dove",
-        img: "/Birds/Images/Mourning-Dove.jpg",
-        call:"/Birds/Calls/MOUDOV_1.cooamppartialcoo_NYle_1.mp3",
-        text: "What bird is this?",
-        choices: ['American Robin','White-breasted Nuthatch','House Finch','Mourning Dove']
-    },
-    {
-        name: "American Goldfinch",
-        img: "/Birds/Images/American-Goldfinch.jpg",
-        call:"/Birds/Calls/AMEGOL_1.songnum1_UTkc_1.mp3",
-        text: "What bird is this?",
-        choices: ['American Robin','American Goldfinch','Northern Cardinal','Mourning Dove']
-    },
-    {
-        name: "House Finch",
-        img: "/Birds/Images/House-Finch.jpg",
-        call:"/Birds/Calls/HOUFIN_1.songnum1_NYle_1.mp3",
-        text: "What bird is this?",
-        choices: ['Song Sparrow','Blue Jay','Northern Cardinal','House Finch']
-    },
-    {
-        name: "Song Sparrow",
-        img: "/Birds/Images/Song-Sparrow.jpg",
-        call:"/Birds/Calls/SONSPA_1.songsnum1_NYle_1.mp3",
-        text: "What bird is this?",
-        choices: ['American Robin','White-breasted Nuthatch','American Goldfinch','Song Sparrow']
-    },
-    {
-        name: "Tufted Titmouse",
-        img: "/Birds/Images/Tufted-Titmouse.jpg",
-        call:"/Birds/Calls/TUFTIT_1.songsnum1_OHle_1.mp3",
-        text: "What bird is this?",
-        choices: ['Tufted Titmouse','Blue Jay','Northern Cardinal','Mourning Dove']
-    },
-    {
-        name: "White-breasted Nuthatch",
-        img: "/Birds/Images/White-Breasted-Nuthatch.jpg",
-        call:"/Birds/Calls/WHBRNU_1.songnum1_NYle_1.mp3",
-        text: "What bird is this?",
-        choices: ['Tufted Titmouse','Blue Jay','White-breasted Nuthatch','Mourning Dove']
-    }
-]
-
 export default function Practice(){
     const {state} = useStore();
-    const [questionArray, setQuestionArray] = useState(questions)
-    const [questionsLeft, setQuestionsLeft] = useState(questions.length)
+    const [questions, setQuestions] = useState([])
+    const [questionArray, setQuestionArray] = useState([])
+    const [questionsLeft, setQuestionsLeft] = useState(0) //questions.length
     const [showStart, setShowStart] = useState(true)
     const [showQuestions, setShowQuestions] = useState(false)
     const [showEnd, setShowEnd] = useState(false)
@@ -82,6 +17,25 @@ export default function Practice(){
     const [difficulty, setDifficulty] = useState('Easy')
     const [mode, setMode] = useState('Call')
 
+    useEffect(()=>{ //on load, gets questions from backend
+        const fetchQuestions = async () => {
+            try {
+                const res = await fetch('/api/questions')
+                const data = await res.json()
+                console.log(data)
+                setQuestions(data)
+            } catch (error) {
+                console.log(error)
+            }
+        }
+        fetchQuestions()
+    },[])
+
+    useEffect(()=>{ //sets mutable array and length
+        setQuestionArray(questions)
+        setQuestionsLeft(questions.length)
+    },[questions])
+
     useEffect(()=>{
         if(showStart){ //if start screen is shown reset the question number
             setQuestionNumber(0)
@@ -91,7 +45,6 @@ export default function Practice(){
         else{ //if turned off, start questions
             setQuestionNumber(1)
             getNextQuestion()
-            
         }
     },[showStart])
 
@@ -118,7 +71,6 @@ export default function Practice(){
 
     const getNextQuestion = () => {
         setQuestionArrayNumber(Math.floor(Math.random() * questionsLeft))
-        console.log(questionsLeft)
     }
 
     function handleBegin(){
@@ -180,7 +132,7 @@ export default function Practice(){
                 <a onClick={handleBegin}>Begin</a>
                 
             </section>}
-            { showQuestions && <section id="question-card">
+            {showQuestions && <section id="question-card">
                 <h2>Question {questionNumber}</h2>
                 <Question name={questionArray[questionArrayNumber].name} text={questionArray[questionArrayNumber].text} img={questionArray[questionArrayNumber].img} 
                 call={questionArray[questionArrayNumber].call} choices={questionArray[questionArrayNumber].choices} nextQuestion={triggerNextQuestion} hint={showHint} difficulty={difficulty} mode={mode}/>

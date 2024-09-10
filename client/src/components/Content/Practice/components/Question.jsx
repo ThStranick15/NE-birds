@@ -9,14 +9,14 @@ export default function Question(props){
 
     function handleSubmit(e){
         e.preventDefault()
-        if(props.name === answer){
+        if(props.name.toLowerCase() === answer.toLowerCase()){
             setWrong(false)
             setCorrect(true)
             setWrongAnswerCount(0)
             setTimeout(()=>{ //wait 3 sec before going to next question
                 props.nextQuestion()
                 setCorrect(false)
-                
+                setAnswer('')
             }, "3000")
             return
         }
@@ -44,11 +44,11 @@ export default function Question(props){
         }
         setWrongAnswerCount(wrongAnswerCount + 1)
         setWrong(true)
-        if(wrongText === 'That\'s not it.'){
-            setWrongText('Try again.')
+        if(wrongText === 'Not this one!'){
+            setWrongText('Try again!')
         }
         else{
-            setWrongText('That\'s not it.')
+            setWrongText('Not this one!')
         }
     }
 
@@ -63,7 +63,7 @@ export default function Question(props){
                 </section> :
                 <form onSubmit={handleSubmit}>
                     <label>Answer:</label>
-                    <input type="text" onChange={(e)=>setAnswer(e.target.value)}/>
+                    <input type="text" onChange={(e)=>setAnswer(e.target.value)} value={answer}/>
                     <button type="submit">Submit</button>
                 </form>}
             {wrong && <p className="response">{wrongText}</p>}
